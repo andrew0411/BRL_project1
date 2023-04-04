@@ -45,8 +45,9 @@ hyperparameters = {
 }
 
 def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
+  best_hparam = {}
   if model_name in ['ridge', 'lasso', 'elasticnet']:
-    best_hparam = {}
+    
     temp = 0
     for a in hyperparameters[model_name]['alpha']:
       if model_name == 'ridge':
@@ -64,10 +65,9 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
       
       if test_r2 > temp:
         temp = test_r2
-        best_hparam['alpha'] = a
+        best_hparam = model.get_params()
   
   elif model_name == 'knn':
-    best_hparam = {}
     temp = 0
     for a in hyperparameters[model_name]['n_neighbors']:
         for w in hyperparameters[model_name]['weights']:
@@ -80,11 +80,9 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
 
             if test_r2 > temp:
                 temp = test_r2
-                best_hparam['n_neighbors'] = a
-                best_hparam['weights'] = w
+                best_hparam = model.get_params()
                 
   elif model_name == 'randomforest':
-    best_hparam = {}
     temp = 0
 
     for n in hyperparameters[model_name]['n_estimators']:
@@ -101,12 +99,9 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
 
                 if test_r2 > temp:
                     temp = test_r2
-                    best_hparam['n_estimators'] = n
-                    best_hparam['criterion'] = c
-                    best_hparam['max_depth'] = d 
+                    best_hparam = model.get_params()
                     
   elif model_name == 'gradientboosting':
-    best_hparam = {}
     temp = 0
 
     for n in hyperparameters[model_name]['n_estimators']:
@@ -123,12 +118,9 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
 
                 if test_r2 > temp:
                     temp = test_r2
-                    best_hparam['n_estimators'] = n
-                    best_hparam['loss'] = c
-                    best_hparam['max_depth'] = d 
+                    best_hparam = model.get_params()
     
   elif model_name == 'svr':
-    best_hparam = {}
     temp = 0
 
     for k in hyperparameters[model_name]['kernel']:
@@ -145,9 +137,7 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
 
                     if test_r2 > temp:
                         temp = test_r2
-                        best_hparam['kernel'] = k
-                        best_hparam['C'] = c
-                        best_hparam['degree'] = d                 
+                        best_hparam = model.get_params()                
             else:
                 model = SVR(kernel=k, C=c).fit(x_tr, y_tr)
                 pred_tr = model.predict(x_tr)
@@ -158,11 +148,9 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
 
                 if test_r2 > temp:
                     temp = test_r2
-                    best_hparam['kernel'] = k
-                    best_hparam['C'] = c
+                    best_hparam = model.get_params()
 
   elif model_name == 'mlp':
-    best_hparam = {}
     temp = 0
 
     X_tr = np.array(x_tr.values)
@@ -193,9 +181,6 @@ def get_best_hparams(model_name, x_tr, x_ts, y_tr, y_ts):
 
               if test_r2 > temp:
                   temp = test_r2
-                  best_hparam['hidden_layer'] = h
-                  best_hparam['a'] = a
-                  best_hparam['lr'] = l
-                  best_hparam['result'] = temp
+                  best_hparam = model.get_params()
                   
-  return best_hparam  
+  return best_hparam
