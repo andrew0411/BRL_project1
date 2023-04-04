@@ -7,6 +7,14 @@
 
 ### Machine Learning for expedited screening of hydrogen evolution catalysts in doped transition metal dichalcogenides (TMDs)
 
+<p align="center">
+    <img src="./assets/Correlaton_plot.jpg" width="50%" />
+</p>
+
+<p align="center">
+    <img src="./assets/GB_importance.jpg" width="50%" />
+</p>
+
 - 데이터 시각화 및 실험 결과를 보여주는데 필수 및 기초적인 라이브러리인 `matplotlib`에 대한 이해
 - Hyperparamter tuning
 - 실제 수집된 TMD 데이터를 다루면서 촉매 소재로 적합한지 예측
