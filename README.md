@@ -8,7 +8,7 @@
 ### Machine Learning for expedited screening of hydrogen evolution catalysts in doped transition metal dichalcogenides (TMDs)
 
 <p align="center">
-    <img src="./assets/Correlaton_plot.jpg" width="50%" />
+    <img src="./assets/Correlation_plot.jpg" width="50%" />
 </p>
 
 <p align="center">
