@@ -6,6 +6,8 @@
 - 내용 : 수전해 촉매 소재의 대체재로 활용가치가 높아진 TMD 의 화학적 feature를 입력으로 받아, 촉매 소재 적합성을 예측하는 간단한 ML 프로젝트 
 
 ### Machine Learning for expedited screening of hydrogen evolution catalysts in doped transition metal dichalcogenides (TMDs)
+- IJER (International Journal of Energy Research) [In-preparation]
+- First author
 
 <p align="center">
     <img src="./assets/Correlation_plot.jpg" width="50%" />
